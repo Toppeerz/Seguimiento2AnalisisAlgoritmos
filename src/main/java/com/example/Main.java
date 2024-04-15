@@ -25,11 +25,11 @@ public class Main extends JFrame {
     public Main() {
 
         int[] arr = new int[262_144];
-        Random rand = new Random();
-        for (int i = 0; i < arr.length; i++) {
-            // Cada número será un número de 8 dígitos único
-            arr[i] = 10_000_000 + rand.nextInt(89_999_999); 
-        }
+        // Random rand = new Random();
+        // for (int i = 0; i < arr.length; i++) {
+        //     // Cada número será un número de 8 dígitos único
+        //     arr[i] = 10_000_000 + rand.nextInt(89_999_999); 
+        // }
          int n = arr.length;
         // try {
         //     PrintWriter writer = new PrintWriter("array.txt", "UTF-8");
@@ -43,15 +43,15 @@ public class Main extends JFrame {
 
         int index = 0;
 
-        // try {
-        //     Scanner scanner = new Scanner(new File("array.txt"));
-        //     while (scanner.hasNextInt()) {
-        //         arr[index++] = scanner.nextInt();
-        //     }
-        //     scanner.close();
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }
+        try {
+            Scanner scanner = new Scanner(new File("array.txt"));
+            while (scanner.hasNextInt()) {
+                arr[index++] = scanner.nextInt();
+            }
+            scanner.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         List<AbstractMap.SimpleEntry<String, Long>> listaTiempos = new ArrayList<>();
         listaTiempos.add(new AbstractMap.SimpleEntry<>("TimSort", calcularTimSort(arr, n)));
